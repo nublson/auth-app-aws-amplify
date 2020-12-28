@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import {
   useFonts,
   Roboto_500Medium,
@@ -5,9 +6,12 @@ import {
   Roboto_700Bold,
 } from '@expo-google-fonts/roboto';
 import { Share_700Bold } from '@expo-google-fonts/share';
-import { AppLoading } from 'expo';
+import AppLoading from 'expo-app-loading';
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
+
+import Router from './routes';
 
 const App: React.FC = () => {
   const [fontsLoaded] = useFonts({
@@ -20,21 +24,8 @@ const App: React.FC = () => {
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-      </View>
-    );
+    return <Router />;
   }
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default App;
