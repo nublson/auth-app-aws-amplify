@@ -7,9 +7,7 @@ import {
 } from '@expo-google-fonts/roboto';
 import { Share_700Bold } from '@expo-google-fonts/share';
 import AppLoading from 'expo-app-loading';
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { SafeAreaView } from 'react-native';
 
 import Router from './routes';
 

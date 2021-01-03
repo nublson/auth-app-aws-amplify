@@ -2,8 +2,9 @@ import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 
+import Layout from '../../components/Layout';
 import { Buttons } from '../../components/shared';
-import { Container, Logo, Content, Footer, Caption } from './styles';
+import { Container, Logo, Content } from './styles';
 
 const Auth = () => {
   const { navigate } = useNavigation();
@@ -17,19 +18,11 @@ const Auth = () => {
           <Buttons.Submit
             title="Sign In"
             onPress={() => {
-              navigate('Default');
+              navigate('SignIn');
             }}
           />
 
-          <Footer>
-            <Caption>Don’t have an account?</Caption>
-            <Buttons.Link
-              title="Sign Up"
-              onPress={() => {
-                navigate('Default');
-              }}
-            />
-          </Footer>
+          <Layout.Footer />
         </Content>
       </Container>
     </SafeAreaView>

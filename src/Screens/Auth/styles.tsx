@@ -5,6 +5,7 @@ export const Container = styled.View`
   align-items: center;
   justify-content: center;
   padding: 0 25px;
+  background-color: #000;
 
   position: relative;
 `;
@@ -22,17 +23,4 @@ export const Content = styled.View`
 
   position: absolute;
   bottom: 64px;
-`;
-
-export const Footer = styled.View`
-  width: 100%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const Caption = styled.Text`
-  font-size: 14px;
-  font-family: 'Roboto_400Regular';
-  color: #fff;
 `;
