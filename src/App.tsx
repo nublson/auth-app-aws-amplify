@@ -1,8 +1,8 @@
 import 'react-native-gesture-handler';
 import {
   useFonts,
-  Roboto_500Medium,
   Roboto_400Regular,
+  Roboto_500Medium,
   Roboto_700Bold,
 } from '@expo-google-fonts/roboto';
 import { Share_700Bold } from '@expo-google-fonts/share';
@@ -15,8 +15,8 @@ import Router from './routes';
 
 const App: React.FC = () => {
   const [fontsLoaded] = useFonts({
-    Roboto_500Medium,
     Roboto_400Regular,
+    Roboto_500Medium,
     Roboto_700Bold,
     Share_700Bold,
   });
