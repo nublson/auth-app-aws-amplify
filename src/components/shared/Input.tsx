@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import { useField } from '@unform/core';
+import React, { useRef, useEffect } from 'react';
 import { TextInputProps, TextInput } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
@@ -8,6 +9,10 @@ interface IInputProps extends TextInputProps {
   name: string;
   label: string;
   password?: boolean;
+}
+
+interface InputReference {
+  value: string;
 }
 
 const StyledInput = styled.View`
@@ -45,11 +50,44 @@ const ForgotPasswordButton = styled.Text`
 const TextField: React.FC<IInputProps> = ({ name, label, password, ...rest }) => {
   const { navigate } = useNavigation();
 
+  const { fieldName, registerField, defaultValue = '', error, clearError } = useField(name);
+
+  const inputElementRef = useRef<TextInput>(null);
+  const inputValueRef = useRef<InputReference>({
+    value: defaultValue,
+  });
+
+  useEffect(() => {
+    registerField<string>({
+      name: fieldName,
+      ref: inputValueRef.current,
+      setValue(ref: InputReference, value: string) {
+        inputValueRef.current.value = value;
+        inputElementRef.current?.setNativeProps({ text: value });
+      },
+      clearValue() {
+        inputValueRef.current.value = '';
+        inputElementRef.current?.clear();
+      },
+
+      getValue(ref: InputReference) {
+        return ref.value;
+      },
+    });
+  }, [fieldName, registerField, inputElementRef]);
+
   return (
     <>
       <StyledInput>
         <Label>{label}</Label>
-        <Field {...rest} />
+        <Field
+          ref={inputElementRef}
+          defaultValue={defaultValue}
+          onChangeText={(value) => {
+            inputValueRef.current.value = value;
+          }}
+          {...rest}
+        />
       </StyledInput>
       {password && (
         <BorderlessButton
