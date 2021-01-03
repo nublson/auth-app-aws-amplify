@@ -12,8 +12,21 @@ const SignIn: React.FC = () => {
 
         <Content>
           <InputGroup>
-            <Input.TextField name="email" label="email" />
-            <Input.TextField name="password" label="password" />
+            <Input.TextField
+              name="email"
+              label="email"
+              autoCompleteType="email"
+              keyboardType="email-address"
+              textContentType="emailAddress"
+            />
+            <Input.TextField
+              name="password"
+              label="password"
+              autoCompleteType="password"
+              textContentType="password"
+              secureTextEntry
+              password
+            />
           </InputGroup>
 
           <Footer>

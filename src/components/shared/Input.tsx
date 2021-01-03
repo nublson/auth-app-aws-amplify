@@ -1,10 +1,13 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { TextInputProps, TextInput } from 'react-native';
+import { BorderlessButton } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 
 interface IInputProps extends TextInputProps {
   name: string;
   label: string;
+  password?: boolean;
 }
 
 const StyledInput = styled.View`
@@ -32,12 +35,32 @@ const Field = styled(TextInput)`
   flex: 1;
 `;
 
-const TextField: React.FC<IInputProps> = ({ name, label, ...rest }) => {
+const ForgotPasswordButton = styled.Text`
+  margin-top: 10px;
+  font-size: 14px;
+  font-family: 'Roboto_400Regular';
+  text-decoration: underline;
+`;
+
+const TextField: React.FC<IInputProps> = ({ name, label, password, ...rest }) => {
+  const { navigate } = useNavigation();
+
   return (
-    <StyledInput>
-      <Label>{label}</Label>
-      <Field {...rest} />
-    </StyledInput>
+    <>
+      <StyledInput>
+        <Label>{label}</Label>
+        <Field {...rest} />
+      </StyledInput>
+      {password && (
+        <BorderlessButton
+          onPress={() => {
+            navigate('Default');
+          }}
+          style={{ alignSelf: 'flex-end' }}>
+          <ForgotPasswordButton>Forgot password?</ForgotPasswordButton>
+        </BorderlessButton>
+      )}
+    </>
   );
 };
 
