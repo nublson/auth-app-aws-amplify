@@ -13,6 +13,7 @@ import styled from 'styled-components/native';
 import { Buttons } from '../shared';
 
 interface IFooterProps {
+  signIn?: boolean;
   invert?: boolean;
 }
 
@@ -33,17 +34,19 @@ export const Caption = styled.Text<IFooterStyleProps>`
   color: ${(props) => (!props.invert ? ` #fff` : `#000`)};
 `;
 
-const Footer: React.FC<IFooterProps> = ({ invert }) => {
+const Footer: React.FC<IFooterProps> = ({ invert, signIn }) => {
   const { navigate } = useNavigation();
 
   return (
     <StyledFooter>
-      <Caption invert={invert}>Don’t have an account?</Caption>
+      <Caption invert={invert}>
+        {signIn ? 'Don’t have an account? ' : 'Already have an account?'}
+      </Caption>
       <Buttons.Link
-        title="Sign Up"
+        title={signIn ? 'Sign Up' : 'Sign In'}
         invert={invert}
         onPress={() => {
-          navigate('Default');
+          navigate(signIn ? 'Default' : 'Sign In');
         }}
       />
     </StyledFooter>

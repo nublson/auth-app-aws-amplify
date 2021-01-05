@@ -22,7 +22,7 @@ const Auth = () => {
             }}
           />
 
-          <Layout.Footer />
+          <Layout.Footer signIn />
         </Content>
       </Container>
     </SafeAreaView>

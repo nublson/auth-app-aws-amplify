@@ -58,7 +58,7 @@ const SignIn: React.FC = () => {
                 formRef.current?.submitForm();
               }}
             />
-            <Layout.Footer invert />
+            <Layout.Footer invert signIn />
           </Footer>
         </Content>
       </Container>
