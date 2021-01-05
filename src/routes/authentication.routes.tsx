@@ -1,9 +1,9 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { SafeAreaView } from 'react-native';
 
 import Auth from '../Screens/Auth';
 import SignIn from '../Screens/Auth/SignIn';
+import SignUp from '../Screens/Auth/SignUp';
 import Default from '../Screens/Default';
 
 const AuthStack = createStackNavigator();
@@ -21,6 +21,7 @@ const Authentication = () => {
       <AuthStack.Screen name="Auth" component={Auth} />
 
       <AuthStack.Screen name="SignIn" component={SignIn} />
+      <AuthStack.Screen name="SignUp" component={SignUp} />
 
       <AuthStack.Screen name="Default" component={Default} />
     </AuthStack.Navigator>

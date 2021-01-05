@@ -21,6 +21,7 @@ const Title = styled.Text`
   margin-top: 15px;
 `;
 const Subtitle = styled.Text`
+  max-width: 85%;
   font-size: 14px;
   font-family: 'Roboto_400Regular';
   color: #c9c9c9;

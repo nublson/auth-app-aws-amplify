@@ -46,7 +46,7 @@ const Footer: React.FC<IFooterProps> = ({ invert, signIn }) => {
         title={signIn ? 'Sign Up' : 'Sign In'}
         invert={invert}
         onPress={() => {
-          navigate(signIn ? 'Default' : 'Sign In');
+          navigate(signIn ? 'SignUp' : 'SignIn');
         }}
       />
     </StyledFooter>
