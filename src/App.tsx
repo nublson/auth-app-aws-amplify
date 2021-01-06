@@ -6,9 +6,12 @@ import {
   Roboto_700Bold,
 } from '@expo-google-fonts/roboto';
 import { Share_700Bold } from '@expo-google-fonts/share';
+import { NavigationContainer } from '@react-navigation/native';
 import AppLoading from 'expo-app-loading';
 import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { AuthProvider } from './contexts/auth';
 import Router from './routes';
 
 const App: React.FC = () => {
@@ -22,7 +25,15 @@ const App: React.FC = () => {
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
-    return <Router />;
+    return (
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <AuthProvider>
+            <Router />
+          </AuthProvider>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    );
   }
 };
 

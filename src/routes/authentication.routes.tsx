@@ -8,7 +8,7 @@ import Default from '../Screens/Default';
 
 const AuthStack = createStackNavigator();
 
-const Authentication = () => {
+const AuthenticationRoutes: React.FC = () => {
   return (
     <AuthStack.Navigator
       initialRouteName="Auth"
@@ -28,4 +28,4 @@ const Authentication = () => {
   );
 };
 
-export default Authentication;
+export default AuthenticationRoutes;

@@ -4,6 +4,7 @@ import React, { useRef } from 'react';
 
 import Layout from '../../../components/Layout';
 import { Buttons, Header, Input } from '../../../components/shared';
+import { useAuth } from '../../../contexts/auth';
 import { Container, Content, InputGroup, Footer } from './styles';
 
 interface FormData {
@@ -13,13 +14,12 @@ interface FormData {
 
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const { signIn, signed, user } = useAuth();
 
-  const signIn = (email: string, password: string) => {
-    console.log({ email, password });
-  };
+  console.log({ signed, user });
 
   const handleSubmit: SubmitHandler<FormData> = (data, { reset }) => {
-    signIn(data.email, data.password);
+    signIn();
 
     reset();
   };

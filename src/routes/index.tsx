@@ -1,17 +1,13 @@
-import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { useAuth } from '../contexts/auth';
+import Application from './application.routes';
 import Authentication from './authentication.routes';
 
-const Router = () => {
-  return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <Authentication />
-      </NavigationContainer>
-    </SafeAreaProvider>
-  );
+const Router: React.FC = () => {
+  const { signed } = useAuth();
+
+  return signed ? <Application /> : <Authentication />;
 };
 
 export default Router;
